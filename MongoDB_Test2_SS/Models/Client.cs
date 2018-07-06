@@ -14,14 +14,14 @@ namespace Models
         public List<string> WorkCollection { get; set; }
         
        
-        //TODO: у меня не получилось исправить ошибку
+       
         public Client()
         {
             
             var id = IdGenerator.GetId();
             var name = NameGenerator.GetName();
-            var workColl = "Bussines_" + name + IdGenerator.RandomColl();
-            var workColl2 = "Bussines_" + name + IdGenerator.RandomColl();
+            var workColl = IdGenerator.GetId().ToString();
+            var workColl2 = IdGenerator.GetId().ToString();
 
 
 

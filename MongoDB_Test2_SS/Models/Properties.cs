@@ -21,8 +21,7 @@ namespace Models
         {
             var id = IdGenerator.GetId();
             var name = NameGenerator.GetName();
-            var workColl = "Bussines_" + name + IdGenerator.RandomColl();
-            var workColl2 = "Bussines_" + name + IdGenerator.RandomColl();
+            
 
 
 
