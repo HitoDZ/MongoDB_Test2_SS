@@ -20,8 +20,8 @@ namespace Models
             
             var id = IdGenerator.GetId();
             var name = NameGenerator.GetName();
-            var workColl = "Bussines_" + name + RandomColl();
-            var workColl2 = "Bussines_" + name + RandomColl();
+            var workColl = "Bussines_" + name + IdGenerator.RandomColl();
+            var workColl2 = "Bussines_" + name + IdGenerator.RandomColl();
 
 
 
@@ -52,19 +52,6 @@ namespace Models
 //            return client;
 //        }
 
-        public string RandomColl()
-        {
-            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var stringChars = new char[8];
-            var random = new Random();
-
-            for (int i = 0; i < stringChars.Length; i++)
-            {
-                stringChars[i] = chars[random.Next(chars.Length)];
-            }
-
-            var finalString = new String(stringChars);
-            return finalString;
-        }
+        
     }
 }

@@ -9,7 +9,7 @@ namespace Models.Generators
 
         static TypeGenerator()
         {
-            _types = new List<string>{};
+            _types = new List<string>{"Country","Department","Rozdil","Otdelenie","Cast","Rota"};
         }
 
         public static string GetName()
