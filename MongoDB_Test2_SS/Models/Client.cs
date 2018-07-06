@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using System.ComponentModel;
+using Models.Generators;
 
 namespace Models
 {
@@ -19,34 +20,51 @@ namespace Models
             
             var id = IdGenerator.GetId();
             var name = NameGenerator.GetName();
-            var workColl = "coll" + name + Convert.ToString(id);
-    
+            var workColl = "Bussines_" + name + RandomColl();
+            var workColl2 = "Bussines_" + name + RandomColl();
+
 
 
             this.Id = id;
             this.Name = name;
-            this.WorkCollection = workColl;
+            this.WorkCollection.Add(workColl);
+            this.WorkCollection.Add(workColl2);
 
         }
         
-        public Client(long id,string name,string workCollection)
-        {
-            this.Id = id;
-            this.Name = name;
-            this.WorkCollection = workCollection;
-        }
-        
-        public static Client GenerateRandom()
-        {
-            
-            var id = IdGenerator.GetId();
-            var name = NameGenerator.GetName();
-            var workColl = "coll" + name + Convert.ToString(id);
+//        public Client(long id,string name,string workCollection)
+//        {
+//            this.Id = id;
+//            this.Name = name;
+//            this.WorkCollection = workCollection;
+//        }
+//        
+//        public static Client GenerateRandom()
+//        {
+//            
+//            var id = IdGenerator.GetId();
+//            var name = NameGenerator.GetName();
+//            var workColl = "coll" + name + Convert.ToString(id);
+//
+//            var client = new Client(id, name, workColl);
+//            
+//
+//            return client;
+//        }
 
-            var client = new Client(id, name, workColl);
-            
+        public string RandomColl()
+        {
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            var stringChars = new char[8];
+            var random = new Random();
 
-            return client;
+            for (int i = 0; i < stringChars.Length; i++)
+            {
+                stringChars[i] = chars[random.Next(chars.Length)];
+            }
+
+            var finalString = new String(stringChars);
+            return finalString;
         }
     }
 }

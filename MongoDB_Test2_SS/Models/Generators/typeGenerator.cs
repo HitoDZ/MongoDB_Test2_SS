@@ -3,11 +3,11 @@ using System.Collections.Generic;
 
 namespace Models.Generators
 {
-    internal static class typeGenerator
+    internal static class TypeGenerator
     {
         private static List<string> _types;
 
-        static typeGenerator()
+        static TypeGenerator()
         {
             _types = new List<string>{};
         }

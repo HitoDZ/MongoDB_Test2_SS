@@ -5,11 +5,11 @@ namespace Models.Generators
 
 {
     
-    internal static class nameGenerator
+    internal static class NameGenerator
     {
         private static List<string> _names;
 
-        static nameGenerator()
+        static NameGenerator()
         {
             _names = new List<string>{"Vitia", "Colia", "Anatoliy", "Petro", "Pavlo", "Sumsung","Sony","Test"};
         }

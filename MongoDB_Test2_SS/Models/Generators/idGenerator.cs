@@ -2,7 +2,7 @@
 
 namespace Models.Generators
 {
-    internal static class idGenerator
+    internal static class IdGenerator
     {
         public static long GetId()
         {
