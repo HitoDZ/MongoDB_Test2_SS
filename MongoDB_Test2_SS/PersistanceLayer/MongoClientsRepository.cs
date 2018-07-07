@@ -39,7 +39,11 @@ namespace PersistanceLayer
 
         public List<Client> ReadAll()
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(clientsCollectionName);
+
+            var clients = session.GetClients();
+
+            return clients;
         }
     }
 }
