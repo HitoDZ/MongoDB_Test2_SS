@@ -17,29 +17,11 @@ namespace DbLayer
 
             _db = client.GetDatabase(dbName);
         }
-        
-        
-        public Client GetClient(long id, string collectionName)
+
+
+        public IDbSession GetSession(string context)
         {
-            var clientsCollection = _db.GetCollection<Client>(collectionName);
-
-            var client = clientsCollection.FindSync((c) => c.Id == id).Single();
-
-            return client;
-        }
-
-        public async Task<Client> GetClientAsync(long id, string collectionName)
-        {
-            var clientsCollection = _db.GetCollection<Client>(collectionName);
-
-            //get hot task
-            var task = clientsCollection.FindAsync((c) => c.Id == id);
-
-            //tying get the result
-            var client = await task;
-
-            //return just single result
-            return client.Single();
+            return new MongoDbSession(_db, context);
         }
     }
 }
