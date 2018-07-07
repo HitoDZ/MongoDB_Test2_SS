@@ -1,19 +1,38 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Models.Generators
 {
-    internal static class IdGenerator
+    public static class IdGenerator
     {
+        static System.Random rnd = new System.Random();
+        static List<long> createdId = new List<long>();
+
+        static long GetNewID(long oldID)
+        {
+            while (createdId.Contains(oldID))
+                oldID++;
+
+            createdId.Add(oldID);
+            return oldID;
+        }
+
         public static long GetId()
         {
-            return new Random().Next(0, int.MaxValue);
+            var id = rnd.Next(0, int.MaxValue);
+            return GetNewID(id);
         }
         public static long GetStringId()
         {
-            //#Unity TODO: добавить строку вложености вначале
-            return new Random().Next(0, int.MaxValue);
+            return rnd.Next(0, int.MaxValue);
         }
-         public static string RandomColl()
+
+        public static long GetIDWithDepth(int depth)
+        {
+            var id =(rnd.Next(0, 1000)) + depth * 10000;
+            return GetNewID(id);
+        }
+        public static string RandomColl()
         {
             var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
             var stringChars = new char[8];

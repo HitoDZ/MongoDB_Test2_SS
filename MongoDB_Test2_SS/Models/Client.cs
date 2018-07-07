@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using Models.Generators;
 
 namespace Models
 {
@@ -18,12 +17,12 @@ namespace Models
         public Client()
         {
             
-            var id = IdGenerator.GetId();
-            var name = NameGenerator.GetName();
-            var workColl = IdGenerator.GetId().ToString();
-            var workColl2 = IdGenerator.GetId().ToString();
+            var id = Generators.IdGenerator.GetId();
+            var name = Generators.NameGenerator.GetName();
+            var workColl = Generators.IdGenerator.GetId().ToString();
+            var workColl2 = Generators.IdGenerator.GetId().ToString();
 
-
+            this.WorkCollection = new List<string>();
 
             this.Id = id;
             this.Name = name;
