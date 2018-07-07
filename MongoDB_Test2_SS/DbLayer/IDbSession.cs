@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Models;
 
 namespace DbLayer
@@ -37,5 +38,17 @@ namespace DbLayer
         /// <param name="id">Property identifier</param>
         /// <returns>Task with property</returns>
         Task<Properties> GetPropertiesAsync(long id);
+
+        /// <summary>
+        /// Synchroniously get all clients from db
+        /// </summary>
+        /// <returns>List of clients</returns>
+        List<Client> GetClients();
+
+        /// <summary>
+        /// Asynchroniously get all clients from db
+        /// </summary>
+        /// <returns>Task with list of clients</returns>
+        Task<List<Client>> GetClientsAsync();
     }
 }
