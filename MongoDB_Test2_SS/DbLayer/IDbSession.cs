@@ -24,6 +24,18 @@ namespace DbLayer
         /// <returns>Task of getting client</returns>
         Task<Client> GetClientAsync(long id);
 
+        /// <summary>
+        /// Synchroniouslt get properties class
+        /// </summary>
+        /// <param name="id">Property identifier</param>
+        /// <returns>Property class</returns>
         Properties GetProperties(long id);
+
+        /// <summary>
+        /// Asynchroniously get properties class
+        /// </summary>
+        /// <param name="id">Property identifier</param>
+        /// <returns>Task with property</returns>
+        Task<Properties> GetPropertiesAsync(long id);
     }
 }

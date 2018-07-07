@@ -35,16 +35,34 @@ namespace DbLayer
             //get hot task
             var task = clientsCollection.FindAsync((c) => c.Id == id);
 
-            //trying get the result
-            var client = await task;
+            //trying get set of clients against find statement
+            var clients = await task;
 
             //return just single result
-            return client.Single();
+            return clients.Single();
         }
 
         public Properties GetProperties(long id)
         {
-            throw new System.NotImplementedException();
+            var propertiesCollection = _db.GetCollection<Properties>(_workingCollection);
+
+            var property = propertiesCollection.FindSync((p) => p.Id == id).Single();
+
+            return property;
+        }
+
+        public async Task<Properties> GetPropertiesAsync(long id)
+        {
+            var propertiesCollection = _db.GetCollection<Properties>(_workingCollection);
+
+            //get hot task
+            var task = propertiesCollection.FindAsync((p) => p.Id == id);
+
+            //trying get set of properties against find statement
+            var properties = await task;
+
+            //return just one single result
+            return properties.Single();
         }
     }
 }
