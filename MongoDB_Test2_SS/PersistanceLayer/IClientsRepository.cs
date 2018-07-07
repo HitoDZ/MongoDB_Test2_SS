@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Models;
 
 namespace PersistanceLayer
@@ -23,5 +24,9 @@ namespace PersistanceLayer
         /// <param name="id">Client`s id</param>
         /// <returns>Task with client instance</returns>
         Task<Client> ReadAsync(long id);
+
+
+        List<Client> ReadAll();
+        
     }
 }

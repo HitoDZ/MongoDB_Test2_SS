@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using DbLayer;
 using Models;
 
@@ -9,7 +10,7 @@ namespace PersistanceLayer
         private IDbProvider _dbProvider;
 
         //it should be moved from there it the future
-        private string clientsCollectionName = "ClientsCollection";
+        private static string clientsCollectionName = "ClientsCollection";
 
         public MongoClientsRepository(IDbProvider provider)
         {
@@ -34,6 +35,11 @@ namespace PersistanceLayer
             var client = await session.GetClientAsync(id);
 
             return client;
+        }
+
+        public List<Client> ReadAll()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
