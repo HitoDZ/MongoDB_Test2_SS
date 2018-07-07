@@ -45,5 +45,17 @@ namespace PersistanceLayer
 
             return clients;
         }
+
+        public async Task<List<Client>> ReadAllAsync()
+        {
+            var session = _dbProvider.GetSession(clientsCollectionName);
+
+            var task = session.GetClientsAsync();
+
+            var clients = await task;
+
+
+            return clients;
+        }
     }
 }
