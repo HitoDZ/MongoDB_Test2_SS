@@ -4,7 +4,6 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\MongoDB-Test-SS\DBLayer\DBLayer.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
   </ItemGroup>
 </Project>
