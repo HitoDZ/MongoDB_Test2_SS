@@ -4,8 +4,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BL_Mocks", "BL_Mocks\BL_Mocks.csproj", "{0BC763C2-0039-4F63-A9BE-8A78D02C2A7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DBLayer", "..\..\MongoDB-Test-SS\DBLayer\DBLayer.csproj", "{DBED740A-5245-4DBB-81BF-28837C37A409}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,9 +18,5 @@ Global
 		{0BC763C2-0039-4F63-A9BE-8A78D02C2A7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BC763C2-0039-4F63-A9BE-8A78D02C2A7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BC763C2-0039-4F63-A9BE-8A78D02C2A7A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DBED740A-5245-4DBB-81BF-28837C37A409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBED740A-5245-4DBB-81BF-28837C37A409}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBED740A-5245-4DBB-81BF-28837C37A409}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBED740A-5245-4DBB-81BF-28837C37A409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
