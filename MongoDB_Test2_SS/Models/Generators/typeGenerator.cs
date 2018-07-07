@@ -3,13 +3,13 @@ using System.Collections.Generic;
 
 namespace Models.Generators
 {
-    internal static class TypeGenerator
+    public static class TypeGenerator
     {
         private static List<string> _types;
 
         static TypeGenerator()
         {
-            _types = new List<string>{"Country","Department","Rozdil","Otdelenie","Cast","Rota"};
+            _types = new List<string>{"Country","Department","Office","Employer"};
         }
 
         public static string GetName()
