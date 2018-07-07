@@ -4,7 +4,8 @@ using Models;
 namespace DbLayer
 {
     /// <summary>
-    /// Interact with one of db collections/tables
+    /// Interface to interact with one of db collections
+    /// during one session
     /// </summary>
     public interface IDbSession
     {
@@ -12,8 +13,6 @@ namespace DbLayer
         /// Synchroniously get client entity from
         /// db
         /// </summary>
-        /// <param name="id">Client identifier</param>
-        /// <param name="collectioName">Name of collection that contains info about clients</param>
         /// <returns>Client class</returns>
         Client GetClient(long id);
 
@@ -22,8 +21,7 @@ namespace DbLayer
         /// db
         /// </summary>
         /// <param name="id">Client identifier</param>
-        /// <param name="collectioName">Name of collection that contains info about clients</param>
-        /// <returns>Client class</returns>
+        /// <returns>Task of getting client</returns>
         Task<Client> GetClientAsync(long id);
 
         Properties GetProperties(long id);

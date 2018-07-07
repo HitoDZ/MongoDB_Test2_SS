@@ -4,7 +4,7 @@ using Models;
 namespace DbLayer
 {
     /// <summary>
-    /// Provide interface to interact with Db
+    /// Provide interface to interact with Db via sessions
     /// </summary>
     public interface IDbProvider
     {
