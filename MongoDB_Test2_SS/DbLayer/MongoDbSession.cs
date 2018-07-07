@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Models;
 using MongoDB.Driver;
 
@@ -63,6 +64,26 @@ namespace DbLayer
 
             //return just one single result
             return properties.Single();
+        }
+
+        public List<Client> GetClients()
+        {
+            var clientsCollection = _db.GetCollection<Client>(_workingCollection);
+
+            var clients = clientsCollection.FindSync((c) => true);
+
+            return clients.ToList();
+        }
+
+        public async Task<List<Client>> GetClientsAsync()
+        {
+            var clientsCollection = _db.GetCollection<Client>(_workingCollection);
+
+            var task = clientsCollection.FindAsync((c) => true);
+
+            var clients = await task;
+
+            return clients.ToList();
         }
     }
 }
