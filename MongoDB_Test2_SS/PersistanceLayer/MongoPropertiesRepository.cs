@@ -26,22 +26,30 @@ namespace PersistanceLayer
         
         public void CreateProperty(Properties property)
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(_workingCollection);
+            
+            session.Create(property);
         }
 
-        public Task CreatePropertyAsync(Properties property)
+        public async Task CreatePropertyAsync(Properties property)
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(_workingCollection);
+
+            await session.CreateAsync(property);
         }
 
         public void CreateProperties(List<Properties> properties)
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(_workingCollection);
+            
+            session.CreateMany(properties);
         }
 
-        public Task CreatePropertiesAsync(List<Properties> propertieses)
+        public async Task CreatePropertiesAsync(List<Properties> properties)
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(_workingCollection);
+
+            await session.CreateManyAsync(properties);
         }
         
         #endregion
@@ -50,12 +58,20 @@ namespace PersistanceLayer
         
         public Properties ReadProperty(long id)
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(_workingCollection);
+
+            var property = session.Read<Properties>(id);
+
+            return property;
         }
 
-        public Task<Properties> ReadPropertyAsync(long id)
+        public async Task<Properties> ReadPropertyAsync(long id)
         {
-            throw new System.NotImplementedException();
+            var session = _dbProvider.GetSession(_workingCollection);
+
+            var property = await session.ReadAsync<Properties>(id);
+
+            return property;
         }
         
         #endregion
