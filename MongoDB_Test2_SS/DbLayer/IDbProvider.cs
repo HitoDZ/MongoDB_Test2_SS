@@ -15,9 +15,7 @@ namespace DbLayer
         /// <param name="context">collection name</param>
         /// <returns></returns>
         IDbSession GetSession(string context);
-        
-        //get db == get + create
-        
-        //create collection
+
+        void CreateCollection(string name);
     }
 }
