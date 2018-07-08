@@ -16,6 +16,5 @@ namespace DbLayer
         /// <returns></returns>
         IDbSession GetSession(string context);
 
-        void CreateCollection(string name);
     }
 }

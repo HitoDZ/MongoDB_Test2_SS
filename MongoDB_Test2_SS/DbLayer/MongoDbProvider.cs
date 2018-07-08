@@ -26,10 +26,5 @@ namespace DbLayer
         {
             return new MongoDbSession(_db, context);
         }
-
-        public void CreateCollection(string name)
-        {
-            _db.CreateCollection(name);
-        }
     }
 }

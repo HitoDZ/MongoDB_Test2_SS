@@ -33,6 +33,7 @@ namespace PersistanceLayer
         /// <param name="properties">List of properties</param>
         /// <returns>Task with creating</returns>
         Task CreatePropertiesAsync(List<Properties> properties);
+        
 
         #endregion
 
