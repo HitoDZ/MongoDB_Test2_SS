@@ -9,6 +9,8 @@ namespace PersistanceLayer
     {
         private IDbProvider _dbProvider;
 
+        private IDbSession _session;
+
         private string clientsCollectionName;
 
         /// <summary>
@@ -20,6 +22,8 @@ namespace PersistanceLayer
         {
             _dbProvider = provider;
             clientsCollectionName = context;
+
+            _session = _dbProvider.GetSession(clientsCollectionName);
         }
 
 
@@ -27,30 +31,22 @@ namespace PersistanceLayer
         
         public void CreateClient(Client instance)
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-            
-            session.Create(instance);
+            _session.Create(instance);
         }
 
         public async Task CreateClientAsync(Client instance)
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-            
-            await session.CreateAsync(instance);
+            await _session.CreateAsync(instance);
         }
 
         public void CreateClients(List<Client> instances)
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-            
-            session.CreateMany(instances);
+            _session.CreateMany(instances);
         }
 
         public async Task CreateClientsAsync(List<Client> instances)
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-
-            await session.CreateManyAsync(instances);
+            await _session.CreateManyAsync(instances);
         }
 
         #endregion
@@ -59,36 +55,28 @@ namespace PersistanceLayer
         
         public Client ReadClient(long id)
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-
-            var client = session.Read<Client>(id);
+            var client = _session.Read<Client>(id);
 
             return client;
         }
 
         public async Task<Client> ReadClientAsync(long id)
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-
-            var client = await session.ReadAsync<Client>(id);
+            var client = await _session.ReadAsync<Client>(id);
 
             return client;
         }
 
         public List<Client> ReadAllClients()
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-
-            var clients = session.ReadAll<Client>();
+            var clients = _session.ReadAll<Client>();
 
             return clients;
         }
 
         public async Task<List<Client>> ReadAllClientsAsync()
         {
-            var session = _dbProvider.GetSession(clientsCollectionName);
-
-            var task = session.ReadAllAsync<Client>();
+            var task = _session.ReadAllAsync<Client>();
 
             var clients = await task;
 
