@@ -86,6 +86,34 @@ namespace DbLayer
             return clients.ToList();
         }
 
+        public void Create<T>(T instance)
+        {
+            var collection = _db.GetCollection<T>(_workingCollection);
+            
+            collection.InsertOne(instance);
+        }
+
+        public async void CreateAsync<T>(T instance)
+        {
+            var collection = _db.GetCollection<T>(_workingCollection);
+
+            await collection.InsertOneAsync(instance);
+        }
+
+        public void CreateMany<T>(List<T> instancies)
+        {
+            var collection = _db.GetCollection<T>(_workingCollection);
+            
+            collection.InsertMany(instancies);
+        }
+
+        public async void CreateManyAsync<T>(List<T> instancies)
+        {
+            var collection = _db.GetCollection<T>(_workingCollection);
+
+            await collection.InsertManyAsync(instancies);
+        }
+
         public T Read<T>(long id)
         {
             throw new System.NotImplementedException();

@@ -10,6 +10,8 @@ namespace DbLayer
     /// </summary>
     public interface IDbSession
     {
+        #region ToDelete
+        
         /// <summary>
         /// Synchroniously get client entity from
         /// db
@@ -51,12 +53,52 @@ namespace DbLayer
         /// <returns>Task with list of clients</returns>
         Task<List<Client>> GetClientsAsync();
 
+        #endregion
+        
+        #region Create
+
+        void Create<T>(T instance);
+
+        void CreateAsync<T>(T instance);
+
+        void CreateMany<T>(List<T> instancies);
+        
+        void CreateManyAsync<T>(List<T> instancies);
+        
+        #endregion
+        
+        #region Read
+        
+        /// <summary>
+        /// Synchronously Read one item from the collection
+        /// </summary>
+        /// <param name="id">item identifier</param>
+        /// <typeparam name="T">item type</typeparam>
+        /// <returns>T instance</returns>
         T Read<T>(long id);
 
+        /// <summary>
+        /// Asynchronously Read one item from the collection
+        /// </summary>
+        /// <param name="id">item identifier</param>
+        /// <typeparam name="T">item type</typeparam>
+        /// <returns>Task with T instance</returns>
         Task<T> ReadAsync<T>(long id);
 
+        /// <summary>
+        /// Synchronously Read all items from the collection
+        /// </summary>
+        /// <typeparam name="T">items type</typeparam>
+        /// <returns>List of T instancies</returns>
         List<T> ReadAll<T>();
 
+        /// <summary>
+        /// Asynchronously Read all items from the collection
+        /// </summary>
+        /// <typeparam name="T">items type</typeparam>
+        /// <returns>Task with List of T instancies</returns>
         Task<List<T>> ReadAllAsync<T>();
+        
+        #endregion
     }
 }
