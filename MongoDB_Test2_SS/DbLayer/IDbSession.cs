@@ -50,5 +50,13 @@ namespace DbLayer
         /// </summary>
         /// <returns>Task with list of clients</returns>
         Task<List<Client>> GetClientsAsync();
+
+        T Read<T>(long id);
+
+        Task<T> ReadAsync<T>(long id);
+
+        List<T> ReadAll<T>();
+
+        Task<List<T>> ReadAllAsync<T>();
     }
 }

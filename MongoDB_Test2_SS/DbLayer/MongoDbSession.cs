@@ -85,5 +85,35 @@ namespace DbLayer
 
             return clients.ToList();
         }
+
+        public T Read<T>(long id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<T> ReadAsync<T>(long id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public List<T> ReadAll<T>()
+        {
+            var collection = _db.GetCollection<T>(_workingCollection);
+
+            var result = collection.FindSync((_) => true);
+
+            return result.ToList();
+        }
+
+        public async Task<List<T>> ReadAllAsync<T>()
+        {
+            var collection = _db.GetCollection<T>(_workingCollection);
+
+            var task = collection.FindAsync((_) => true);
+
+            var result = await task;
+
+            return result.ToList();
+        }
     }
 }
