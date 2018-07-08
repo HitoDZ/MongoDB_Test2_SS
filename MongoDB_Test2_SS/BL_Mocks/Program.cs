@@ -34,7 +34,9 @@ namespace BL_Mocks
             string clientsCollectionName = "ClientsCollection";
             string dbName = "SS_test1DB";
 
-            var dbConnection = new DBLayer.DataBase(dbName);
+            
+            
+            /*var dbConnection = new DbLayer.DataBase(dbName);*/
             dbConnection.CreateCollection(clientsCollectionName);   // create client collection
             dbConnection.InsertMany(clienList, clientsCollectionName);  // insert client
             Console.WriteLine("client insert done");

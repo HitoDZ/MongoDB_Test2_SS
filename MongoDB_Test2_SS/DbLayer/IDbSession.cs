@@ -13,13 +13,33 @@ namespace DbLayer
         
         #region Create
 
+        /// <summary>
+        /// Synchronously create instance in the db
+        /// </summary>
+        /// <param name="instance">Instance to create</param>
+        /// <typeparam name="T">Type of instance</typeparam>
         void Create<T>(T instance) where T : IIdentifieble;
 
-        void CreateAsync<T>(T instance) where T : IIdentifieble;
+        /// <summary>
+        /// Asynchronously create instance in the db
+        /// </summary> 
+        /// <param name="instance">Instance to create</param>
+        /// <typeparam name="T">Type of instance</typeparam>
+        Task CreateAsync<T>(T instance) where T : IIdentifieble;
 
-        void CreateMany<T>(List<T> instancies) where T : IIdentifieble;
+        /// <summary>
+        /// Synchronously create instances in the db
+        /// </summary>
+        /// <param name="instances">Instances to create</param>
+        /// <typeparam name="T">Type of instance</typeparam>
+        void CreateMany<T>(List<T> instances) where T : IIdentifieble;
         
-        void CreateManyAsync<T>(List<T> instancies) where T : IIdentifieble;
+        /// <summary>
+        /// Asynchronously create instance in the db
+        /// </summary>
+        /// <param name="instances">Instances to create</param>
+        /// <typeparam name="T">Type of instances</typeparam>
+        Task CreateManyAsync<T>(List<T> instances) where T : IIdentifieble;
         
         #endregion
         

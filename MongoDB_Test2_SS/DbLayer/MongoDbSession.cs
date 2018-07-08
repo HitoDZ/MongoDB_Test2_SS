@@ -29,25 +29,25 @@ namespace DbLayer
             collection.InsertOne(instance);
         }
 
-        public async void CreateAsync<T>(T instance) where T : IIdentifieble
+        public async Task CreateAsync<T>(T instance) where T : IIdentifieble
         {
             var collection = _db.GetCollection<T>(_workingCollection);
 
             await collection.InsertOneAsync(instance);
         }
 
-        public void CreateMany<T>(List<T> instancies) where T : IIdentifieble
+        public void CreateMany<T>(List<T> instances) where T : IIdentifieble
         {
             var collection = _db.GetCollection<T>(_workingCollection);
             
-            collection.InsertMany(instancies);
+            collection.InsertMany(instances);
         }
 
-        public async void CreateManyAsync<T>(List<T> instancies) where T : IIdentifieble
+        public async Task CreateManyAsync<T>(List<T> instances) where T : IIdentifieble
         {
             var collection = _db.GetCollection<T>(_workingCollection);
 
-            await collection.InsertManyAsync(instancies);
+            await collection.InsertManyAsync(instances);
         }
         
         #endregion

@@ -16,10 +16,43 @@ namespace PersistanceLayer
         {
             _dbProvider = provider;
         }
+
+
+        #region Create
         
+        public void CreateClient(Client instance)
+        {
+            var session = _dbProvider.GetSession(clientsCollectionName);
+            
+            session.Create(instance);
+        }
+
+        public async Task CreateClientAsync(Client instance)
+        {
+            var session = _dbProvider.GetSession(clientsCollectionName);
+            
+            await session.CreateAsync(instance);
+        }
+
+        public void CreateClients(List<Client> instances)
+        {
+            var session = _dbProvider.GetSession(clientsCollectionName);
+            
+            session.CreateMany(instances);
+        }
+
+        public async Task CreateClientsAsync(List<Client> instances)
+        {
+            var session = _dbProvider.GetSession(clientsCollectionName);
+
+            await session.CreateManyAsync(instances);
+        }
+
+        #endregion
         
+        #region Read
         
-        public Client Read(long id)
+        public Client ReadClient(long id)
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
@@ -28,7 +61,7 @@ namespace PersistanceLayer
             return client;
         }
 
-        public async Task<Client> ReadAsync(long id)
+        public async Task<Client> ReadClientAsync(long id)
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
@@ -37,7 +70,7 @@ namespace PersistanceLayer
             return client;
         }
 
-        public List<Client> ReadAll()
+        public List<Client> ReadAllClients()
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
@@ -46,7 +79,7 @@ namespace PersistanceLayer
             return clients;
         }
 
-        public async Task<List<Client>> ReadAllAsync()
+        public async Task<List<Client>> ReadAllClientsAsync()
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
@@ -57,5 +90,8 @@ namespace PersistanceLayer
 
             return clients;
         }
+        
+        #endregion
+        
     }
 }
