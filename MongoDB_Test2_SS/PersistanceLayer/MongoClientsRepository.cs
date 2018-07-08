@@ -9,12 +9,17 @@ namespace PersistanceLayer
     {
         private IDbProvider _dbProvider;
 
-        //it should be moved from there it the future
-        private static string clientsCollectionName = "ClientsCollection";
+        private string clientsCollectionName;
 
-        public MongoClientsRepository(IDbProvider provider)
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="provider">Provide interactions with db</param>
+        /// <param name="context">Context specialization(in case with mongo = clients collection name)</param>
+        public MongoClientsRepository(IDbProvider provider, string context)
         {
             _dbProvider = provider;
+            clientsCollectionName = context;
         }
 
 

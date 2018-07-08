@@ -14,26 +14,26 @@ namespace PersistanceLayer
         /// <summary>
         /// Synchronously create client instance in db
         /// </summary>
-        /// <param name="instance">Client`s instance</param>
-        void CreateClient(Client instance);
+        /// <param name="client">Client`s instance</param>
+        void CreateClient(Client client);
 
         /// <summary>
         /// Aynchronously create client instance in db
         /// </summary>
-        /// <param name="instance">Client`s instance</param>
-        Task CreateClientAsync(Client instance);
+        /// <param name="client">Client`s instance</param>
+        Task CreateClientAsync(Client client);
 
         /// <summary>
         /// Synchronously create client instances in db
         /// </summary>
-        /// <param name="instances">List of instance</param>
-        void CreateClients(List<Client> instances);
+        /// <param name="clients">List of instance</param>
+        void CreateClients(List<Client> clients);
 
         /// <summary>
         /// Asynchronously create client instances in db
         /// </summary>
-        /// <param name="instances">List of instance</param>
-        Task CreateClientsAsync(List<Client> instances);
+        /// <param name="clients">List of instance</param>
+        Task CreateClientsAsync(List<Client> clients);
 
         #endregion
         
