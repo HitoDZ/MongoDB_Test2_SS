@@ -25,8 +25,15 @@ namespace PersistanceLayer
             _session = _dbProvider.GetSession(_workingCollection);
         }
         
-        #region Create
+        public void ChangeContext(string newContext)
+        {
+            _workingCollection = newContext;
+
+            _session = _dbProvider.GetSession(_workingCollection);
+        }
         
+        #region Create
+
         public void CreateProperty(Properties property)
         {
             _session.Create(property);

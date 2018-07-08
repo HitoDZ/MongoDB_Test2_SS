@@ -6,6 +6,11 @@ namespace PersistanceLayer
 {
     public interface IPropertiesRepository
     {
+        /// <summary>
+        /// Inteded for changeing the working context(collection)
+        /// </summary>
+        void ChangeContext(string newContext);
+        
         #region Create
 
         /// <summary>
