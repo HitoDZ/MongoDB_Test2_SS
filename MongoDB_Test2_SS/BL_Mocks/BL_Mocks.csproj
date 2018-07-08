@@ -6,5 +6,6 @@
   <ItemGroup>
     <ProjectReference Include="..\DbLayer\DbLayer.csproj" />
     <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\PersistanceLayer\PersistanceLayer.csproj" />
   </ItemGroup>
 </Project>
