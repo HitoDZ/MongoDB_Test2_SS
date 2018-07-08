@@ -28,19 +28,38 @@ namespace BL_Mocks
 
         static void Main(string[] args)
         {
-            List<Properties> properties = new List<Properties>();
-            var clienList = Clients();
-
-            string clientsCollectionName = "ClientsCollection";
             string dbName = "SS_test1DB";
+            string clientsCollectionName = "ClientsCollection";
+
+            List<Properties> properties = new List<Properties>();
+            var clients = Clients();
+
+            var dbprovider = new DbLayer.MongoDbProvider("mongodb://localhost:27017", dbName);
+            var clientRepository = new PersistanceLayer.MongoClientsRepository(dbprovider,clientsCollectionName);
+            clientRepository.CreateClients(clients);
+            Console.WriteLine("Create clients:"+clients.Count);
+
+            foreach (var client in clients)
+            {
+                foreach (var workcolname in client.WorkCollection)
+                {
+                    var workcoll = new PersistanceLayer.MongoPropertiesRepository(dbprovider, workcolname);
+                    properties.Clear();
+                    MockProperties.AddPropertiesToRootTree(properties);
+                    workcoll.CreateProperties(properties);
+                }
+            }
+            Console.WriteLine("Create workcpll:" + clients.Count);
+
+           // var prop = new PersistanceLayer.MongoPropertiesRepository(dbprovider, ""); 
+            /*
 
             
             
-            /*var dbConnection = new DbLayer.DataBase(dbName);*/
             dbConnection.CreateCollection(clientsCollectionName);   // create client collection
             dbConnection.InsertMany(clienList, clientsCollectionName);  // insert client
             Console.WriteLine("client insert done");
-
+            
             foreach (var client in clienList)
             {
                 var workCollections = client.WorkCollection;
@@ -62,7 +81,7 @@ namespace BL_Mocks
             Console.WriteLine("workcoll insert done");
 
             Console.WriteLine("Hello World! "+properties.Count);
-            Console.ReadKey();
+           */ Console.ReadKey();
         }
     }
 }
