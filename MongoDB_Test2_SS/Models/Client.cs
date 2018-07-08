@@ -10,7 +10,7 @@ namespace Models
 
         public string Name { get; set; }
 
-        public List<string> WorkCollection { get; set; }
+        public List<long> WorkCollection { get; set; }
         
        
        
@@ -19,10 +19,10 @@ namespace Models
             
             var id = Generators.IdGenerator.GetId();
             var name = Generators.NameGenerator.GetName();
-            var workColl = Generators.IdGenerator.GetId().ToString();
-            var workColl2 = Generators.IdGenerator.GetId().ToString();
+            var workColl = Generators.IdGenerator.GetId();
+            var workColl2 = Generators.IdGenerator.GetId();
 
-            this.WorkCollection = new List<string>();
+            this.WorkCollection = new List<long>();
 
             this.Id = id;
             this.Name = name;

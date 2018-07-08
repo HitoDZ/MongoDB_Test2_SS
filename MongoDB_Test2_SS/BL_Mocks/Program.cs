@@ -35,53 +35,23 @@ namespace BL_Mocks
             var clients = Clients();
 
             var dbprovider = new DbLayer.MongoDbProvider("mongodb://localhost:27017", dbName);
+            // fill clients
             var clientRepository = new PersistanceLayer.MongoClientsRepository(dbprovider,clientsCollectionName);
             clientRepository.CreateClients(clients);
             Console.WriteLine("Create clients:"+clients.Count);
-
+            // fill properties for each client and each workcollection 
             foreach (var client in clients)
             {
                 foreach (var workcolname in client.WorkCollection)
                 {
                     var workcoll = new PersistanceLayer.MongoPropertiesRepository(dbprovider, workcolname);
                     properties.Clear();
-                    MockProperties.AddPropertiesToRootTree(properties);
+                    MockProperties.AddPropertiesToRootTree(properties,long.Parse(workcolname));
                     workcoll.CreateProperties(properties);
                 }
             }
-            Console.WriteLine("Create workcpll:" + clients.Count);
-
-           // var prop = new PersistanceLayer.MongoPropertiesRepository(dbprovider, ""); 
-            /*
-
-            
-            
-            dbConnection.CreateCollection(clientsCollectionName);   // create client collection
-            dbConnection.InsertMany(clienList, clientsCollectionName);  // insert client
-            Console.WriteLine("client insert done");
-            
-            foreach (var client in clienList)
-            {
-                var workCollections = client.WorkCollection;
-                foreach (var workCollection in workCollections)
-                             dbConnection.CreateCollection(workCollection); // createworkcoll
-            }
-            Console.WriteLine("workcoll create done");
-
-            foreach (var client in clienList)
-            {
-                var workCollections = client.WorkCollection;
-                foreach (var workCollection in workCollections)
-                {
-                    properties.Clear();
-                    MockProperties.AddPropertiesToRootTree(properties);
-                    dbConnection.InsertMany(properties, workCollection);
-                }
-            }
-            Console.WriteLine("workcoll insert done");
-
-            Console.WriteLine("Hello World! "+properties.Count);
-           */ Console.ReadKey();
+            Console.WriteLine("All done. Clients:" + clients.Count);
+             Console.ReadKey();
         }
     }
 }

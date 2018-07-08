@@ -10,15 +10,18 @@ namespace BL_Mocks
     {
         public const int MinChildCount = 3;
         public const int MaxChildCount = 5;
-        public const int MaxDepthLevel = 5;
+        public const int MaxDepthLevel = 2;
         //Передаем уровень вложености для ID и ограничения рекурсии
         // Type - чтобы на одном уровне вложености были однотипные обьекты
 
-        MockProperties(List<Properties> propertiesCollection, int depthLevel, string _Type)
+        MockProperties(List<Properties> propertiesCollection, int depthLevel, string _Type, long id= 0)
         {
             Type = _Type;
             Name = _Type + "_" + new System.Random().Next(0, 1000);  // имя проперти состоит из типа +Rand номер
-            Id = Models.Generators.IdGenerator.GetIDWithDepth(depthLevel);
+            if (id == 0)
+                Id = Models.Generators.IdGenerator.GetIDWithDepth(depthLevel);
+            else
+                Id = id;
             Text = Models.Generators.AttributesGenerator.GetDict();
 
             int childcount = new System.Random().Next(MinChildCount, MaxChildCount);
@@ -40,9 +43,9 @@ namespace BL_Mocks
 
         }
 
-        public static void AddPropertiesToRootTree(List<Properties> propertiesCollection)
+        public static void AddPropertiesToRootTree(List<Properties> propertiesCollection, long rootId)
         {
-            propertiesCollection.Add(new MockProperties(propertiesCollection, 0, "bid"));
+            propertiesCollection.Add(new MockProperties(propertiesCollection, 0, "bid", rootId));
         }
 
     }
