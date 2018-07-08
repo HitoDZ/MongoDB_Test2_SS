@@ -23,7 +23,7 @@ namespace PersistanceLayer
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
-            var client = session.GetClient(id);
+            var client = session.Read<Client>(id);
 
             return client;
         }
@@ -32,7 +32,7 @@ namespace PersistanceLayer
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
-            var client = await session.GetClientAsync(id);
+            var client = await session.ReadAsync<Client>(id);
 
             return client;
         }
@@ -41,7 +41,7 @@ namespace PersistanceLayer
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
-            var clients = session.GetClients();
+            var clients = session.ReadAll<Client>();
 
             return clients;
         }
@@ -50,7 +50,7 @@ namespace PersistanceLayer
         {
             var session = _dbProvider.GetSession(clientsCollectionName);
 
-            var task = session.GetClientsAsync();
+            var task = session.ReadAllAsync<Client>();
 
             var clients = await task;
 

@@ -4,7 +4,7 @@ using System.ComponentModel;
 
 namespace Models
 {
-    public class Client
+    public class Client : IIdentifieble
     {
         public long Id { get; set; }
 

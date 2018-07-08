@@ -3,10 +3,10 @@ using Models.Generators;
 using System.Runtime.Serialization;
 
 namespace Models
-{
+{ 
     [DataContract]
     [KnownType(typeof(Properties))]
-    public class Properties
+    public class Properties : IIdentifieble
     {
         [DataMember]
         public long Id { get; set; }
