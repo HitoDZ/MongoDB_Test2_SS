@@ -32,13 +32,11 @@ namespace BL_Mocks
             MockProperties.SetMockSettings(3,3,5); // не обязательно задавать есть по умолчанию
 
             List<Properties> properties = new List<Properties>();
-            var clients = Clients(10000);
+            var clients = Clients(10);
 
-            var dbprovider = new DbLayer.MongoDbProvider("mongodb://localhost:27017", dbName);
-            
             // fill clients
-            var clientRepository = new PersistanceLayer.MongoClientsRepository(dbprovider,clientsCollectionName);
-            clientRepository.CreateClients(clients);
+            var clientRepository = new PersistanceLayer.MongoDbRepository<Client>("mongodb://localhost:27017", dbName, clientsCollectionName);
+            clientRepository.CreateMany(clients);
             Console.WriteLine("Create clients:"+clients.Count);
             int i = 0;
             
@@ -47,10 +45,10 @@ namespace BL_Mocks
             {
                 foreach (var workcolnameID in client.WorkCollection)
                 {
-                    var workcoll = new PersistanceLayer.MongoPropertiesRepository(dbprovider, workcolnameID.ToString());
+                    var workcoll = new PersistanceLayer.MongoDbRepository<Properties>("mongodb://localhost:27017", dbName, workcolnameID.ToString());
                     properties.Clear(); // ВАЖНО не удалять строку очистки пропертей для следующего клиента
                     MockProperties.AddPropertiesToRootTree(properties,workcolnameID);
-                    workcoll.CreateProperties(properties);
+                    workcoll.CreateMany(properties);
                     Console.WriteLine(i++);
                 }
             }
