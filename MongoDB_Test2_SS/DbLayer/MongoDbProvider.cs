@@ -12,7 +12,7 @@ namespace DbLayer
         /// <summary>
         /// Create instance to communicate with MongoDb
         /// </summary>
-        /// <param name="connectionUri">http://localhost:27107</param>
+        /// <param name="connectionUri">mongodb://localhost:27017</param>
         /// <param name="dbName">create or open db with dbName name</param>
         public MongoDbProvider(string connectionUri, string dbName)
         {

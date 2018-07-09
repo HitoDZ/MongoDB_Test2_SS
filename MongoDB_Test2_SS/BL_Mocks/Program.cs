@@ -29,10 +29,10 @@ namespace BL_Mocks
         {
             string dbName = "SS_test1DB";
             string clientsCollectionName = "ClientsCollection";
-            MockProperties.SetMockSettings(3, 5, 5); // не обязательно задавать есть по умолчанию
+            MockProperties.SetMockSettings(3,3,5); // не обязательно задавать есть по умолчанию
 
             List<Properties> properties = new List<Properties>();
-            var clients = Clients(5);
+            var clients = Clients(10000);
 
             var dbprovider = new DbLayer.MongoDbProvider("mongodb://localhost:27017", dbName);
             
@@ -40,6 +40,7 @@ namespace BL_Mocks
             var clientRepository = new PersistanceLayer.MongoClientsRepository(dbprovider,clientsCollectionName);
             clientRepository.CreateClients(clients);
             Console.WriteLine("Create clients:"+clients.Count);
+            int i = 0;
             
             // fill properties for each client and each workcollection 
             foreach (var client in clients)
@@ -50,12 +51,13 @@ namespace BL_Mocks
                     properties.Clear(); // ВАЖНО не удалять строку очистки пропертей для следующего клиента
                     MockProperties.AddPropertiesToRootTree(properties,workcolnameID);
                     workcoll.CreateProperties(properties);
+                    Console.WriteLine(i++);
                 }
             }
             Console.WriteLine("All done. Clients:" + clients.Count);
  
 
-            // пробую сделать тестовый проход
+            /*// пробую сделать тестовый проход
             // TODO конечно стоит вынести в методи и сделать рефакторинг, но позже
             var rnd = new Random();
             var  someclient = clientRepository.ReadClient(clients[rnd.Next(0, clients.Count)].Id);
@@ -70,7 +72,7 @@ namespace BL_Mocks
                 rootProperty = findworkcoll.ReadProperty(rootProperty.Child[0]);
             }
             Console.WriteLine("Find id = "+rootProperty.Id); // assert  id начинаеться с цифры глубины вложености  = мы на дне
-            Console.ReadKey();
+            Console.ReadKey();*/
         }
     }
 }
